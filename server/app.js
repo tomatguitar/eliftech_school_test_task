@@ -15,12 +15,6 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// GLOBAL MIDDLEWARES
-// Implement CORS
-// app.use(cors());
-// app.options('*', cors());
-// app.use(cors({ origin: 'https://webdelivery.herokuapp.com'}));
-
 // Serving static files
 app.use(express.static(path.join(__dirname, './client/build')));
 
@@ -34,6 +28,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
+// Allow CORS
 app.use((req, res, next) => {
   res.append('Access-Control-Allow-Origin', ['*']);
   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
