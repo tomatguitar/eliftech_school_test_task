@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
+// const cors = require('cors');
 
 const shopsRouter = require('./routes/shopsRoutes');
 const ordersRouter = require('./routes/ordersRoutes');
@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // GLOBAL MIDDLEWARES
 // Implement CORS
-app.use(cors());
+// app.use(cors());
 // app.options('*', cors());
 // app.use(cors({ origin: 'https://webdelivery.herokuapp.com'}));
 
