@@ -11,7 +11,7 @@ const fetchShopData = (shopId) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       return data;
     };
@@ -19,7 +19,7 @@ const fetchShopData = (shopId) => {
     try {
       const shopData = await fetchData();
       dispatch(getShopProducts(shopData));
-      console.log('Products loaded');
+      // console.log('Products loaded');
     } catch (error) {
       dispatch(showError({ error: true, message: error.message }));
     }

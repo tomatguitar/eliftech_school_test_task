@@ -7,9 +7,9 @@ const cartSlice = createSlice({
   },
   reducers: {
     getShopProducts: (state, action) => {
-      console.log(current(state));
+      // console.log(current(state));
       state.shopProducts = action.payload.data.products;
-      console.log(current(state));
+      // console.log(current(state));
     }
   }
 });

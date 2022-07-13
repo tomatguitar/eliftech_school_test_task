@@ -17,14 +17,16 @@ const sendCartData = (cart) => {
       }
 
       const responseData = await response.json();
-      console.log(responseData);
+
+      return responseData;
+      // console.log(responseData);
     };
 
     try {
       await sendRequest();
       dispatch(replaceCart());
 
-      console.log('Order was successfully placed!');
+      // console.log('Order was successfully placed!');
     } catch (error) {
       dispatch(showError({ error: true, message: error.message }));
     }
