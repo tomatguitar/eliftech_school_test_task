@@ -7,7 +7,7 @@
         "client": "cd client && npm run start",
         "server": "cd server && npm run start",
         "server:dev": "cd server && npm run start:dev",
-        "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+        "start": "npm run server && npm run client",
         "start:dev": "concurrently --kill-others \"npm run server:dev\" \"npm run client\"",
         "postinstall": "(cd client && npm install && npm run build); (cd server && npm install)"
     },
