@@ -17,10 +17,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 // GLOBAL MIDDLEWARES
 // Implement CORS
-app.use(cors());
-
-app.options('*', cors());
-app.use(cors({ origin: 'localhost:3000'}));
+// app.use(cors());
+// app.options('*', cors());
+app.use(cors({ origin: 'https://webdelivery.herokuapp.com'}));
 
 // Serving static files
 app.use(express.static(path.join(__dirname, './client/build')));
