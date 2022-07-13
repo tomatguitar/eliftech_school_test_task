@@ -4,13 +4,16 @@ import { replaceCart } from '../slices/cartSlice';
 const sendCartData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
-      const response = await fetch(`api/orders`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cart)
-      });
+      const response = await fetch(
+        `https://develop--cute-profiterole-3e722e.netlify.app/api/orders`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(cart)
+        }
+      );
 
       if (!response.ok) {
         throw new Error('Error sending cart data!');
