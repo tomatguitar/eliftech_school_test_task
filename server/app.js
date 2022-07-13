@@ -23,7 +23,7 @@ app.options('*', cors());
 app.use(cors({ origin: 'localhost:3000'}));
 
 // Serving static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './client/build')));
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
