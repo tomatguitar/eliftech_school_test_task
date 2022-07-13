@@ -1,0 +1,23 @@
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid white;
+  border-radius: 5px;
+  height: 100vh;
+  margin: 0;
+  width: 1080px;
+
+  & li {
+    padding: 10px;
+  }
+
+  & .emptyList {
+    display: inline-block;
+    text-align: center;
+    margin: 0 0 auto;
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}

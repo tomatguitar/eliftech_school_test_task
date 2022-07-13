@@ -1,0 +1,20 @@
+{
+    "name": "web_delivery",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "client": "cd client && npm run start",
+        "server": "cd server && npm run start",
+        "server:dev": "cd server && npm run start:dev",
+        "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+        "start:dev": "concurrently --kill-others \"npm run server:dev\" \"npm run client\"",
+        "postinstall": "(cd client && npm install) && (cd ../server && npm install)"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^3.5.1"
+    }
+}

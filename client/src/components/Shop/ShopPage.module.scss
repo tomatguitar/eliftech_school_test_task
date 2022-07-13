@@ -1,0 +1,18 @@
+.shopPage {
+  & h2 {
+    color: white;
+    margin: 2rem auto;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  & ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  & .listContainter {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
