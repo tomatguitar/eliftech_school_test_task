@@ -9,7 +9,7 @@ Before running make sure latest Node version is installed on your machine.
 To run application in the console go to the project root folder and enter:
 <code>npm install</code>
 
-In case  if something went wrong during automatic installation, sequentially run <code>npm install</code> from root, client and server folders
+In case  if something went wrong during automatic installation, sequentially run <code>npm install</code> from root, client and server folders:
 <code>
     npm install<br/>
     cd client<br/>
