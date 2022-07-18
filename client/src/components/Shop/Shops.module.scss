@@ -1,0 +1,22 @@
+.shopsList {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+    margin: 0;
+    margin-right: 25px;
+    border: 1px solid white;
+    border-radius: 5px;
+
+    & .shopsItem {
+        padding: 10px;
+    }
+
+    & .button {
+        width: 100%;
+    }
+
+    & .button:hover {
+        background: red;
+    }
+}
