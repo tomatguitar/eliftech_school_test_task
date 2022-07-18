@@ -12,6 +12,10 @@
     border-radius: 5px;
   }
 
+  & .delimeter {
+    text-align: center;
+  }
+
   & .historyForm {
     width: 600px;
     margin: 0 auto;
@@ -20,6 +24,12 @@
     & button {
       width: 150px;
       margin-left: 450px;
+    }
+
+    & .disabled {
+      color: gray;
+      border-color: gray;
+      pointer-events: none;
     }
   }
 }
