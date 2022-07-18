@@ -3,7 +3,7 @@ import { getPlacedOrders } from '../slices/orderSlice';
 
 // https://webdelivery.herokuapp.com/api/orders
 const fetchOrderData = (params) => {
-  let url = '/api/orders';
+  let url = 'https://webdelivery.herokuapp.com/api/orders';
 
   if (params) {
     url += `?${new URLSearchParams(params)}`;

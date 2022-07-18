@@ -6,7 +6,7 @@ import { replaceCart } from '../slices/cartSlice';
 const sendCartData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
-      const response = await fetch(`/api/orders`, {
+      const response = await fetch(`https://webdelivery.herokuapp.com/api/orders/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
