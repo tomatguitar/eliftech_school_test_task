@@ -1,7 +1,7 @@
 import { showError, showFetching } from '../slices/uiSlice';
 import { getPlacedOrders } from '../slices/orderSlice';
 
-// https://webdelivery.herokuapp.com/api/shops/${shopId}
+// https://webdelivery.herokuapp.com/api/orders
 const fetchOrderData = (params) => {
   let url = '/api/orders';
 

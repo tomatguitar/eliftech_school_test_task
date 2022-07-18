@@ -5,7 +5,7 @@ import { getShopProducts } from '../slices/shopSlice';
 const fetchShopData = (shopId) => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const response = await fetch(`/api/shops/${shopId}`);
+      const response = await fetch(`https://webdelivery.herokuapp.com/api/shops/${shopId}`);
 
       if (!response.ok) {
         throw new Error('Error fetching shop data!');
