@@ -8,6 +8,10 @@
   max-width: 30rem;
   background-color: #313131;
   color: white;
+
+  & div {
+    text-align: center;
+  }
 }
 
 .cart h2 {

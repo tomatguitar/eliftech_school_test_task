@@ -1,11 +1,20 @@
 const Order = require('../models/orderModel');
 
 exports.placeOrder = async (req, res, next) => {
-  const doc = await Order.create(req.body);
+  await Order.create(req.body, function (err, order) {
+    const date = new Date();
+    order.set(
+      'orderId',
+      `WD${date.getFullYear()}${date.getMonth()}${date.getDay()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`
+    );
+    order.save();
 
-  res.status(201).send({
-    status: 'success',
-    data: doc,
+    return res.status(201).send({
+      status: 'success',
+      data: {
+        responseMessage: order.orderId,
+      },
+    });
   });
 };
 

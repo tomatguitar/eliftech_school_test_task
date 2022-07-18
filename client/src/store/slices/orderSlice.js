@@ -3,11 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 const cartSlice = createSlice({
   name: 'orders',
   initialState: {
-    orders: []
+    orders: [],
+    orderId: null
   },
   reducers: {
+    getOrderNo: (state, action) => {
+      state.orderId = action.payload.data.orderId;
+    },
     replaceOrderData: (state) => {
       state.orders = [];
+      state.orderId = null;
     },
     getPlacedOrders: (state, action) => {
       // console.log(current(state));
@@ -17,6 +22,6 @@ const cartSlice = createSlice({
   }
 });
 
-export const { getPlacedOrders, replaceOrderData } = cartSlice.actions;
+export const { getOrderNo, getPlacedOrders, replaceOrderData } = cartSlice.actions;
 
 export default cartSlice.reducer;
