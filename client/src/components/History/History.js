@@ -86,12 +86,14 @@ const History = () => {
       <h2>Find your order</h2>
       <form className={classes.historyForm} onSubmit={submitHandler}>
         <Input ref={orderIdInputRef} label="Order ID" input={fields[0]} />
-        <div style={{ textAlign: 'center' }}>
+        <div className={classes.delimeter}>
           <p>OR</p>
         </div>
         <Input ref={emailInputRef} label="Email" input={fields[1]} />
         <Input ref={phoneInputRef} label="Phone" input={fields[2]} />
-        <button type="submit">Find Orders!</button>
+        <button className={isFetch ? classes.disabled : ''} type="submit">
+          Find Orders!
+        </button>
       </form>
       {isEmptyHistory && <h3>{message}</h3>}
       {!isFetch && !isEmptyHistory && (
