@@ -4,8 +4,9 @@ import NavItem from './NavItem';
 import classes from './MainHeader.module.scss';
 
 const menuItems = [
-  { id: 'Shop', title: 'Shop', path: '/' },
-  { id: 'Cart', title: 'Cart', path: '/cart' }
+  { id: 'shop', title: 'Shop', path: '/' },
+  { id: 'cart', title: 'Cart', path: '/cart' },
+  { id: 'history', title: 'History', path: '/history' }
 ];
 
 const MainHeader = () => {

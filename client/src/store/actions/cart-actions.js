@@ -1,10 +1,12 @@
 import { showError } from '../slices/uiSlice';
 import { replaceCart } from '../slices/cartSlice';
 
+// https://webdelivery.herokuapp.com/api/orders
+
 const sendCartData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
-      const response = await fetch(`https://webdelivery.herokuapp.com/api/orders`, {
+      const response = await fetch(`/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

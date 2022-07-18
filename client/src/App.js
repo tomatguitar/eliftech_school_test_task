@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import Cart from './components/Cart/Cart';
+import History from './components/History/History';
 import Layout from './components/Layout/Layout';
 import ShopPage from './components/Shop/ShopPage';
 
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<ShopPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </Layout>
     </>

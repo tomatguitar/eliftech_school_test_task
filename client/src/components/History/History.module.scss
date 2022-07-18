@@ -1,0 +1,30 @@
+.history {
+  width: 1320px;
+  margin: 0 auto;
+
+  & h3 {
+    text-align: center;
+  }
+
+  & .orderListContainter {
+    width: 1320px;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+  & .historyForm {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+
+    & button {
+      width: 150px;
+      margin-left: 450px;
+    }
+  }
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
