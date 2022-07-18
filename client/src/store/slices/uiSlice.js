@@ -1,12 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const uiSlice = createSlice({
   name: 'ui',
   initialState: {
-    showCart: false,
-    error: null
+    error: null,
+    responseMessage: null,
+    isFetching: false
   },
   reducers: {
+    showAlert: (state, action) => {
+      state.responseMessage = action.payload.data.responseMessage;
+      console.log(current(state));
+    },
+    showFetching: (state, action) => {
+      state.isFetching = action.payload;
+      console.log(current(state));
+    },
     showError: (state, action) => {
       state.error = {
         error: action.payload.error,
@@ -16,6 +25,6 @@ const uiSlice = createSlice({
   }
 });
 
-export const { showError } = uiSlice.actions;
+export const { showError, showFetching, showAlert } = uiSlice.actions;
 
 export default uiSlice.reducer;

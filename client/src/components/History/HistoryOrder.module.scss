@@ -1,0 +1,27 @@
+.historyOrderContainer {
+  display: flex;
+  align-items: center;
+
+  & .historyOrderList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 980px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+  .total {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+
+    & .date {
+        display: flex;
+        flex-direction: column;
+    }
+  }
+}
