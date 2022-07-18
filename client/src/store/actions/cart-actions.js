@@ -32,6 +32,7 @@ const sendCartData = (cart) => {
       dispatch(showFetching(false));
       // console.log('Order was successfully placed!');
     } catch (error) {
+      dispatch(showFetching(false));
       dispatch(showError({ error: true, message: error.message }));
     }
   };
