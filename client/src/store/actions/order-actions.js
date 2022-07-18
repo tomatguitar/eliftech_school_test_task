@@ -1,7 +1,7 @@
 import { showError, showFetching } from '../slices/uiSlice';
 import { getPlacedOrders } from '../slices/orderSlice';
 
-// https://webdelivery.herokuapp.com/api/shops/${shopId}
+// https://webdelivery.herokuapp.com/api/orders
 const fetchOrderData = (params) => {
   let url = '/api/orders';
 
@@ -18,7 +18,7 @@ const fetchOrderData = (params) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       return data;
     };
@@ -30,6 +30,7 @@ const fetchOrderData = (params) => {
       dispatch(showFetching(false));
       // console.log('Products loaded');
     } catch (error) {
+      dispatch(showFetching(false));
       dispatch(showError({ error: true, message: error.message }));
     }
   };

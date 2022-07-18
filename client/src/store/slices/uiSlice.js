@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const uiSlice = createSlice({
   name: 'ui',
@@ -10,11 +10,11 @@ const uiSlice = createSlice({
   reducers: {
     showAlert: (state, action) => {
       state.responseMessage = action.payload.data.responseMessage;
-      console.log(current(state));
+      // console.log(current(state));
     },
     showFetching: (state, action) => {
       state.isFetching = action.payload;
-      console.log(current(state));
+      // console.log(current(state));
     },
     showError: (state, action) => {
       state.error = {
