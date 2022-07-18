@@ -28,7 +28,6 @@ const ModalOverlay = (props) => {
 const Modal = (props) => {
   const { title, message, onClose } = props;
   const buttonClickHandler = () => {
-    console.log('Click modal button');
     onClose();
   };
   return (

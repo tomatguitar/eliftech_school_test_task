@@ -21,10 +21,14 @@ const HistoryOrder = (props) => {
       </ul>
       <div className={classes.total}>
         <div className={classes.date}>
+          <p>Order ID:</p>
+          <time>{order.orderId}</time>
+        </div>
+        <div className={classes.date}>
           <p>Order placed:</p>
           <time>{date}</time>
         </div>
-        <p>Total price: {order.totalPrice}</p>
+        <p>Total price: ${order.totalPrice}</p>
       </div>
     </div>
   );

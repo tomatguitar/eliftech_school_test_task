@@ -1,5 +1,12 @@
 const Order = require('../models/orderModel');
 
+const sendRespose = (res, httpCode, status, payload) => {
+  return res.status(httpCode).send({
+    status: status,
+    data: payload,
+  });
+};
+
 exports.placeOrder = async (req, res, next) => {
   await Order.create(req.body, function (err, order) {
     const date = new Date();
@@ -19,22 +26,21 @@ exports.placeOrder = async (req, res, next) => {
 };
 
 exports.getOrders = async (req, res, next) => {
+  const queryObject = {};
+  const queryOrderId = req.query.orderId;
   const queryEmail = req.query.email;
   const queryPhone = req.query.phone;
-  if (!queryEmail || !queryPhone) {
-    return res.status(400).send({
-      status: 'error',
-      message: `Email or phone wasn't set!`,
-    });
+
+  if (queryOrderId) {
+    queryObject.orderId = queryOrderId;
+  } else if (queryEmail && queryPhone) {
+    queryObject['userData.email'] = queryEmail;
+    queryObject['userData.phone'] = queryPhone;
+  } else {
+    return sendRespose(res, 400, 'error', `One of the fields wasn't set!`);
   }
 
-  const doc = await Order.find({
-    'userData.email': queryEmail,
-    'userData.phone': queryPhone,
-  }).sort({ createdAt: 1 });
+  const doc = await Order.find(queryObject).sort({ createdAt: 1 });
 
-  res.status(200).send({
-    status: 'success',
-    data: doc,
-  });
+  sendRespose(res, 200, 'success', doc);
 };
