@@ -4,17 +4,21 @@ import Input from '../UI/Input';
 import HistoryOrder from './HistoryOrder';
 import fetchOrderData from '../../store/actions/order-actions';
 import { replaceOrderData } from '../../store/slices/orderSlice';
+import Modal from '../UI/Modal';
 import classes from './History.module.scss';
 
 const fields = [
+  { id: 'orderId', type: 'text' },
   { id: 'email', type: 'email' },
   { id: 'phone', type: 'tel' }
 ];
 
 const History = () => {
   const [isInitial, setIsInitial] = useState(true);
+  const [isValid, setIsValid] = useState(true);
   const dispatch = useDispatch();
 
+  const orderIdInputRef = useRef();
   const emailInputRef = useRef();
   const phoneInputRef = useRef();
   const orders = useSelector((state) => state.orders.orders);
@@ -36,15 +40,36 @@ const History = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const enteredOrderId = orderIdInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPhone = phoneInputRef.current.value;
 
-    dispatch(
-      fetchOrderData({
-        email: enteredEmail,
-        phone: enteredPhone
-      })
-    );
+    const isEmptyInput = (value) => {
+      return value.trim().length === 0;
+    };
+
+    const isEmptyOrderId = isEmptyInput(enteredOrderId);
+    const isEmptyEmail = isEmptyInput(enteredEmail);
+    const isEmptyPhone = isEmptyInput(enteredPhone);
+
+    if (isEmptyOrderId && isEmptyEmail && isEmptyPhone) {
+      setIsValid(false);
+      return;
+    }
+
+    const requestObject = {};
+
+    if (!isEmptyOrderId && isEmptyEmail && isEmptyPhone) {
+      requestObject.orderId = enteredOrderId;
+    } else if (isEmptyOrderId && !isEmptyEmail && !isEmptyPhone) {
+      requestObject.email = enteredEmail;
+      requestObject.phone = enteredPhone;
+    } else {
+      setIsValid(false);
+      return;
+    }
+
+    dispatch(fetchOrderData(requestObject));
 
     setIsInitial(false);
 
@@ -52,12 +77,20 @@ const History = () => {
     phoneInputRef.current.value = '';
   };
 
+  const closeButtonHandler = () => {
+    setIsValid(true);
+  };
+
   return (
     <section className={classes.history}>
       <h2>Find your order</h2>
       <form className={classes.historyForm} onSubmit={submitHandler}>
-        <Input ref={emailInputRef} label="Email" input={fields[0]} />
-        <Input ref={phoneInputRef} label="Phone" input={fields[1]} />
+        <Input ref={orderIdInputRef} label="Order ID" input={fields[0]} />
+        <div style={{ textAlign: 'center' }}>
+          <p>OR</p>
+        </div>
+        <Input ref={emailInputRef} label="Email" input={fields[1]} />
+        <Input ref={phoneInputRef} label="Phone" input={fields[2]} />
         <button type="submit">Find Orders!</button>
       </form>
       {isEmptyHistory && <h3>{message}</h3>}
@@ -67,6 +100,9 @@ const History = () => {
             return <HistoryOrder key={Math.random()} order={order} />;
           })}
         </div>
+      )}
+      {!isValid && (
+        <Modal title="Error!" message="Please fill proper fields" onClose={closeButtonHandler} />
       )}
     </section>
   );
