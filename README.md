@@ -2,10 +2,6 @@
 
 Test task for ElifTech School - Web application where users can order food delivery
 
-## DEMO
-
-[WEB DELIVERY](https://develop--cute-profiterole-3e722e.netlify.app/)
-
 ## PREPARATION
 
 Check that you have node and npm installed in terminal.
